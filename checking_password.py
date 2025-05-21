@@ -6,10 +6,16 @@ def has_uppercase(password):
     return any(char.isupper() for char in password)
 
 
+def has_digit(password):
+    return any(char.isdigit() for char in password)
+
+
 def checking_password(password):
     if not has_minimum_length(password):
         return False
     if not has_uppercase(password):
+        return False
+    if not has_digit(password):
         return False
     return True 
 
