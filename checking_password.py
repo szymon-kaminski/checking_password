@@ -1,8 +1,13 @@
 def checking_password(password):
-    return True if password else False
+    if len(password) < 8:
+        return False
+    return True 
 
 
-print(check_password("Test123"))
+def main():
+    print(checking_password("Test123"))
+    print(checking_password("Test12345"))
+
 
 if __name__ == "__main__":
     main()
