@@ -1,4 +1,4 @@
-# Password Checker 🔒
+# Password Checker 
 
 A simple Python program that checks if a password meets the following conditions:
 
@@ -12,7 +12,11 @@ A simple Python program that checks if a password meets the following conditions
 
 ```bash
 python checking_password.py
+```
 
-EXAMPLE
-checking_password("Test123!")  # ✅ Strong password
-checking_password("test 12")   # ❌ Not valid
+### Example Usage
+
+```python
+checking_password("Test123!")  #  Strong password
+checking_password("test 12")   #  Not valid
+```
