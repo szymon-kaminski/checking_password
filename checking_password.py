@@ -1,3 +1,5 @@
+# A simple password checker
+
 def has_minimum_length(password):
     return len(password) >= 8
 
