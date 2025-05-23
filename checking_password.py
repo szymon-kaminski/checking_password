@@ -1,5 +1,8 @@
 # A simple password checker
 
+from datetime import datetime
+
+
 def has_minimum_length(password):
     return len(password) >= 8
 
@@ -34,10 +37,19 @@ def checking_password(password):
     return True 
 
 
+def log_password_check(password, result):
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    status = "VALID" if result else "INVALID"
+    with open("log.txt", "a") as file:
+        file.write(f"{now} | {password} | {status}\n")
+
+
 def main():
-    print(checking_password("Test123"))
-    print(checking_password("Test 12!"))
-    print(checking_password("Test123!"))
+    test_passwords = ["Test123", "Test 12!", "Test123!"]
+    for pwd in test_passwords:
+        result = checking_password(pwd)
+        print(f"{pwd}: {result}")
+        log_password_check(pwd, result)
     
 
 if __name__ == "__main__":
