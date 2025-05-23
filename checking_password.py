@@ -23,6 +23,11 @@ def has_no_space(password):
     return " " not in password
 
 
+def check_common_passwords(password):
+    common_passwords = ["12345678", "Qwerty123!", "Password", "abc123!!"]
+    return password in common_passwords
+
+
 def checking_password(password):
     if not has_minimum_length(password):
         return False
@@ -33,6 +38,8 @@ def checking_password(password):
     if not has_special_char(password):
         return False
     if not has_no_space(password):
+        return False
+    if not check_common_passwords(password):
         return False
     return True 
 
