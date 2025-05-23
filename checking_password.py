@@ -1,5 +1,8 @@
 # A simple password checker
 
+from datetime import datetime
+
+
 def has_minimum_length(password):
     return len(password) >= 8
 
@@ -20,6 +23,11 @@ def has_no_space(password):
     return " " not in password
 
 
+def check_common_passwords(password):
+    common_passwords = ["12345678", "Qwerty123!", "Password", "abc123!!"]
+    return password in common_passwords
+
+
 def checking_password(password):
     if not has_minimum_length(password):
         return False
@@ -31,13 +39,23 @@ def checking_password(password):
         return False
     if not has_no_space(password):
         return False
+    if check_common_passwords(password):
+        return False
     return True 
 
 
+def log_password_check(password, result):
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    status = "VALID" if result else "INVALID"
+    with open("log.txt", "a") as file:
+        file.write(f"{now} | {password} | {status}\n")
+
+
 def main():
-    print(checking_password("Test123"))
-    print(checking_password("Test 12!"))
-    print(checking_password("Test123!"))
+    password = input("Enter a password to check: ")
+    result = checking_password(password)
+    print("Password is strong" if result else "Password is not valid")
+    log_password_check(password, result)
     
 
 if __name__ == "__main__":
