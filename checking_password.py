@@ -39,7 +39,7 @@ def checking_password(password):
         return False
     if not has_no_space(password):
         return False
-    if not check_common_passwords(password):
+    if check_common_passwords(password):
         return False
     return True 
 
@@ -52,11 +52,10 @@ def log_password_check(password, result):
 
 
 def main():
-    test_passwords = ["Test123", "Test 12!", "Test123!"]
-    for pwd in test_passwords:
-        result = checking_password(pwd)
-        print(f"{pwd}: {result}")
-        log_password_check(pwd, result)
+    password = input("Enter a password to check: ")
+    result = checking_password(password)
+    print("Password is strong" if result else "Password is not valid")
+    log_password_check(password, result)
     
 
 if __name__ == "__main__":
